@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css">
+</head>
+<body>
+    <div id="workspaceNav">
+        <a href="#w1" data-sohbtn="workspace" data-sohgroup="workspace" data-sohno="1">1</a>
+        <a href="#w2" data-sohbtn="workspace" data-sohgroup="workspace" data-sohno="2">2</a>
+        <a data-sohno="new">+</a>
+    </div>
+    <section id="content">
+        <section data-sohcanv="workspace" data-sohgroup="workspace" data-sohno="1">Body #1</section>
+        <section data-sohcanv="workspace" data-sohgroup="workspace" data-sohno="2">Body #2</section>
+    </section>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+    <script src="Workspaces/workspaces.js"></script>
+    <script>
+        QUnit.test("Dodawanie workspace", function(assert) {
+
+            document.querySelector('[data-sohno="new"]').click();
+
+            assert.equal(document.querySelectorAll('#workspaceNav a').length, 4, "4 linki po dodaniu");
+            assert.equal(document.querySelectorAll('#content section').length, 3, "3 sections po dodaniu");
+            assert.equal(document.querySelector('[data-sohno="3"]').textContent, "3", "Nowy link ma 3");
+            assert.equal(document.querySelector('#content section:last-child').textContent, "Body #3", "Nowy section ma Body #3");
+        });
+    </script>
+</body>
+</html>
