@@ -1,3 +1,0 @@
-trzeba pobrac composer
-
-./vendor/bin/phpunit LibViewsTest.php
